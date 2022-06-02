@@ -610,11 +610,11 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
 
         // phr
 
-        E2SM_MET_MeasurementRecordItem_t *mcsdl = (E2SM_MET_MeasurementRecordItem_t *)calloc(1,sizeof(E2SM_MET_MeasurementRecordItem_t));
+        E2SM_MET_MeasurementRecordItem_t *phr = (E2SM_MET_MeasurementRecordItem_t *)calloc(1,sizeof(E2SM_MET_MeasurementRecordItem_t));
         ret = sprintf(tmp_char,"%d",sched_ctrl->ph);
         cqi->buf  = (uint8_t *)strdup(tmp_char);
         cqi->size = strlen(tmp_char);
-        ret = ASN_SEQUENCE_ADD(&tmp_meas_rec->measRecordItemList.list, mcsdl);
+        ret = ASN_SEQUENCE_ADD(&tmp_meas_rec->measRecordItemList.list, phr);
         DevAssert(ret == 0);
         memset(tmp_char, 0, sizeof(tmp_char));
 
