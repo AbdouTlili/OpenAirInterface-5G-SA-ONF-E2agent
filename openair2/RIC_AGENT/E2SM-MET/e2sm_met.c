@@ -842,8 +842,8 @@ void encode_e2sm_met_indication_header(ranid_t ranid, E2SM_MET_E2SM_MET_Indicati
 
     for (int kpi = 0; kpi < MAX_RECORD_ITEM; kpi++){
         E2SM_MET_MeasurementInfoItem_t* tmp_meas_info_item = (E2SM_MET_MeasurementInfoItem_t*)calloc(1, sizeof(E2SM_MET_MeasurementInfoItem_t));
-        meas_info_item1->buf = (uint8_t *)strdup(e2sm_met_meas_info[kpi].meas_type_name);
-        meas_info_item1->size = strlen(e2sm_met_meas_info[kpi].meas_type_name);
+        tmp_meas_info_item->buf = (uint8_t *)strdup(e2sm_met_meas_info[kpi].meas_type_name);
+        tmp_meas_info_item->size = strlen(e2sm_met_meas_info[kpi].meas_type_name);
         int ret = ASN_SEQUENCE_ADD( &ind_header->measInfoList.list, tmp_meas_info_item);
         DevAssert(ret == 0);
     }
