@@ -729,7 +729,7 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
         const int avg_rsrp = stats->num_rsrp_meas > 0 ? stats->cumul_rsrp / stats->num_rsrp_meas : 0;
         struct rrc_gNB_ue_context_s         *ue_context_p = NULL;
         ue_context_p = rrc_gNB_get_ue_context(RC.nrrrc[0], rnti);
-        printf("\ngNB_ue_ngap_id %d, amf_ue_ngap_id %d, cqi %d, rsrp %d \n ",ue_context_p->ue_context.gNB_ue_ngap_id, ue_context_p->ue_context.amf_ue_ngap_id, UE_info->UE_sched_ctrl[k].CSI_report.cri_ri_li_pmi_cqi_report.wb_cqi_1tb, avg_rsrp);
+        fprintf(stderr,"\ngNB_ue_ngap_id %d, amf_ue_ngap_id %d, cqi %d, rsrp %d \n ",ue_context_p->ue_context.gNB_ue_ngap_id, ue_context_p->ue_context.amf_ue_ngap_id, UE_info->UE_sched_ctrl[k].CSI_report.cri_ri_li_pmi_cqi_report.wb_cqi_1tb, avg_rsrp);
 
     }
 
