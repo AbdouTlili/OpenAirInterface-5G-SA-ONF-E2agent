@@ -557,7 +557,7 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
         ue_context_p = rrc_gNB_get_ue_context(RC.nrrrc[0], rnti);
         NR_UE_sched_ctrl_t *sched_ctrl = &UE_info->UE_sched_ctrl[k];  
         
-        int nb_tr_dl=0, nb_tr_ul=0;
+        int nb_tr_dl=0, nb_tr_ul=0, ul_errors=0,dl_errors=0 ;
 
         nb_tr_dl = stats->dlsch_rounds[0] + stats->dlsch_rounds[1] + stats->dlsch_rounds[2] + stats->dlsch_rounds[3];
         nb_tr_ul = stats->ulsch_rounds[0] + stats->ulsch_rounds[1] + stats->ulsch_rounds[2] + stats->ulsch_rounds[3];
@@ -657,7 +657,7 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
 
         // errors-ul 
         E2SM_MET_MeasurementRecordItem_t *err_ul = (E2SM_MET_MeasurementRecordItem_t *)calloc(1,sizeof(E2SM_MET_MeasurementRecordItem_t));
-        ret = sprintf(tmp_char,"%.2f",stats->ulsch_errors);
+        ret = sprintf(tmp_char,"%.2f",(float)(ul_errors/nb_tr_ul));
         err_ul->buf  = (uint8_t *)strdup(tmp_char);
         err_ul->size = strlen(tmp_char);
         ret = ASN_SEQUENCE_ADD(&tmp_meas_rec->measRecordItemList.list, err_ul);
