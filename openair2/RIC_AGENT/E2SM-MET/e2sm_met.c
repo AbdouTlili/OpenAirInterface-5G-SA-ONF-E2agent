@@ -91,7 +91,7 @@ void encode_e2sm_met_indication_header(ranid_t ranid, E2SM_MET_E2SM_MET_Indicati
 E2SM_MET_GranularityPeriod_t     *g_granulPeriod;
 
 
-#define MAX_RECORD_ITEM 12  // here max recordItems is the same as THE FIXED number of the measurments we have 
+#define MAX_RECORD_ITEM 14  // here max recordItems is the same as THE FIXED number of the measurments we have 
 #define MAX_UE 5
 
 E2SM_MET_MeasurementRecordItem_t *g_indMsgMeasRecItemArr[MAX_RECORD_ITEM];
@@ -118,7 +118,9 @@ met_meas_info_t e2sm_met_meas_info[MAX_RECORD_ITEM] = {
                                             {9, "data-dl", 0, FALSE},
                                             {10, "data-dl", 0, FALSE},
                                             {11, "throughput", 0, FALSE},
-                                            {12, "snr", 0, FALSE}
+                                            {12, "snr", 0, FALSE},
+                                            {13, "amf_ue_ngap_id", 0, FALSE},
+                                            {14, "amf_ue_ngap_id", 0, FALSE}
                                         };
 
 //!SECTION
