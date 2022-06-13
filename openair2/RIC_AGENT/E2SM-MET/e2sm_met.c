@@ -583,7 +583,7 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
 
         E2SM_MET_MeasurementRecord_t *tmp_meas_rec = (E2SM_MET_MeasurementRecord_t *)calloc(1,sizeof(E2SM_MET_MeasurementRecord_t));
 
-        tmp_meas_rec->ueID = ue_context_p->ue_context.gNB_ue_ngap_id;
+        tmp_meas_rec->ueID = 11;
         tmp_meas_rec->ueTag.buf  = (uint8_t *)strdup("A");
         tmp_meas_rec->ueTag.size = strlen("A");
 
@@ -734,7 +734,7 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
     }
 
 
-        ret = sprintf(tmp_char,"%lu",(unsigned long)ue_context_p->ue_context.amf_ue_ngap_id);
+        ret = sprintf(tmp_char,"%lu",0);
         amf_ue_ngap_id->buf  = (uint8_t *)strdup(tmp_char);
         amf_ue_ngap_id->size = strlen(tmp_char);
         ret = ASN_SEQUENCE_ADD(&tmp_meas_rec->measRecordItemList.list, amf_ue_ngap_id);
