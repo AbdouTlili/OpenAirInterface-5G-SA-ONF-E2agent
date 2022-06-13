@@ -772,7 +772,8 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
         // meas_data_item[k]->measRecord = *meas_rec[k];
 
         /* Enqueue Meas data items */
-        ret = ASN_SEQUENCE_ADD(&meas_data->list, meas_rec[k]);
+
+        ret = ASN_SEQUENCE_ADD(&meas_data->list, tmp_meas_rec);
         DevAssert(ret == 0);
     }
 
