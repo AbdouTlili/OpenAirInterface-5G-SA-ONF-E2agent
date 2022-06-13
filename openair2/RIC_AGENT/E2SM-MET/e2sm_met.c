@@ -719,7 +719,11 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
 
         E2SM_MET_MeasurementRecordItem_t *amf_ue_ngap_id = (E2SM_MET_MeasurementRecordItem_t *)calloc(1,sizeof(E2SM_MET_MeasurementRecordItem_t));
 
-        fprintf(stderr, "lu=%lu, x=%x, u=%u", ue_context_p->ue_context.amf_ue_ngap_id,ue_context_p->ue_context.amf_ue_ngap_id,ue_context_p->ue_context.amf_ue_ngap_id);
+        fprintf(stderr, "\n \n -*****------lu=%lu, x=%x, u=%u", ue_context_p->ue_context.amf_ue_ngap_id,ue_context_p->ue_context.amf_ue_ngap_id,ue_context_p->ue_context.amf_ue_ngap_id);
+
+    fprintf(stderr, "\n\n \n -*****------ gNB_ue_ngap_id %d, amf_ue_ngap_id %d, cqi %d, rsrp %d \n ",ue_context_p->ue_context.gNB_ue_ngap_id, ue_context_p->ue_context.amf_ue_ngap_id, UE_info->UE_sched_ctrl[k].CSI_report.cri_ri_li_pmi_cqi_report.wb_cqi_1tb, avg_rsrp);
+
+
 
         ret = sprintf(tmp_char,"%lu",(unsigned long)ue_context_p->ue_context.amf_ue_ngap_id);
         amf_ue_ngap_id->buf  = (uint8_t *)strdup(tmp_char);
