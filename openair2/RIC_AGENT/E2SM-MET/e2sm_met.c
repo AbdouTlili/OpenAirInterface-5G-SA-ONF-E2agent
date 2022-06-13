@@ -2,6 +2,7 @@
 #include <sys/time.h>
 #include <arpa/inet.h>
 #include <stdbool.h>
+#include <inttypes.h>
 #include <string.h>
 #include "common/utils/assertions.h"
 #include "f1ap_common.h"
@@ -115,12 +116,12 @@ met_meas_info_t e2sm_met_meas_info[MAX_RECORD_ITEM] = {
                                             {6, "bler-ul", 0, FALSE},
                                             {7, "bler-dl", 0, FALSE},
                                             {8, "errors-ul", 0, FALSE},
-                                            {9, "data-dl", 0, FALSE},
+                                            {9, "errors-dl", 0, FALSE},
                                             {10, "data-dl", 0, FALSE},
-                                            {11, "throughput", 0, FALSE},
-                                            {12, "snr", 0, FALSE},
-                                            {13, "amf_ue_ngap_id", 0, FALSE},
-                                            {14, "amf_ue_ngap_id", 0, FALSE}
+                                            {11, "data-dl", 0, FALSE},
+                                            {12, "throughput", 0, FALSE},
+                                            {13, "snr", 0, FALSE},
+                                            {14, "amf_ue_ngap_id", 0, FALSE},
                                         };
 
 //!SECTION
@@ -717,7 +718,10 @@ encode_met_Indication_Msg(ric_agent_info_t* ric, ric_subscription_t *rs)
         // amf_ue_ngap_id
 
         E2SM_MET_MeasurementRecordItem_t *amf_ue_ngap_id = (E2SM_MET_MeasurementRecordItem_t *)calloc(1,sizeof(E2SM_MET_MeasurementRecordItem_t));
-        ret = sprintf(tmp_char,"%lu",ue_context_p->ue_context.amf_ue_ngap_id);
+
+        fprintf(stderr, "lu=%lu, x=%s", ret_enc.failed_type->name, ret_enc.failed_type->xml_tag);
+
+        ret = sprintf(tmp_char,"%",ue_context_p->ue_context.amf_ue_ngap_id);
         amf_ue_ngap_id->buf  = (uint8_t *)strdup(tmp_char);
         amf_ue_ngap_id->size = strlen(tmp_char);
         ret = ASN_SEQUENCE_ADD(&tmp_meas_rec->measRecordItemList.list, amf_ue_ngap_id);
